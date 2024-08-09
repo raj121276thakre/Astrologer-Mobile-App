@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.astrologermobileapp.activities.AstroDetailActivity
+import com.example.astrologermobileapp.activities.ChatScreenActivity
 import com.example.astrologermobileapp.adapters.AstrologersDetailsAdapter
 import com.example.astrologermobileapp.databinding.FragmentChatsBinding
 import com.example.astrologermobileapp.models.AstrologerDetails
@@ -69,7 +69,7 @@ class ChatsFragment : Fragment() {
 
         val adapter = AstrologersDetailsAdapter(astrologers) { selectedAstrologer ->
             // Handle item click here
-            val intent = Intent(requireContext(), AstroDetailActivity::class.java)
+            val intent = Intent(requireContext(), ChatScreenActivity::class.java)
             intent.putExtra("name", selectedAstrologer.name)
             intent.putExtra("description", selectedAstrologer.description)
             intent.putExtra("languages", selectedAstrologer.languages)

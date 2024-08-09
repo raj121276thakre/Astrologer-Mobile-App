@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.astrologermobileapp.R
 import com.example.astrologermobileapp.models.Service
 
 
-class ServiceAdapter(private val context: Context, private val serviceList: List<Service>) :
+class ServiceAdapter(
+    private val context: Context,
+    private val serviceList: List<Service>,
+    private val onServiceClick: (Service) -> Unit
+) :
     RecyclerView.Adapter<ServiceAdapter.ServiceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
@@ -26,6 +29,11 @@ class ServiceAdapter(private val context: Context, private val serviceList: List
         holder.txtServiceName.text = service.name
         holder.imgServiceIcon.setImageResource(service.iconResId)
         holder.imgBackground.setImageResource(service.backgroundResId)
+
+        holder.itemView.setOnClickListener {
+            onServiceClick(service) // Trigger the click callback with the selected service
+        }
+
     }
 
     override fun getItemCount(): Int {

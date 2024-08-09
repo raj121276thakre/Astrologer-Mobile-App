@@ -8,9 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.astrologermobileapp.R
 import com.example.astrologermobileapp.models.Astrologer
+import com.example.astrologermobileapp.models.Feature
 import de.hdodenhof.circleimageview.CircleImageView
 
-class AstrologerAdapter(private val astrologers: List<Astrologer>) :
+class AstrologerAdapter(
+    private val astrologers: List<Astrologer>,
+    private val onAstroClick: (Astrologer) -> Unit
+) :
     RecyclerView.Adapter<AstrologerAdapter.AstrologerViewHolder>() {
 
     class AstrologerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,7 +38,9 @@ class AstrologerAdapter(private val astrologers: List<Astrologer>) :
             .load(astrologer.profileImageUrl)
             .into(holder.profileImage)
 
-
+        holder.itemView.setOnClickListener {
+            onAstroClick(astrologer) //
+        }
     }
 
     override fun getItemCount(): Int {

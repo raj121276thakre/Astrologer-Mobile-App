@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/login"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
     tools:context=".auth.LoginActivity">
@@ -117,8 +117,8 @@
         android:id="@+id/help_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginBottom="13dp"
+        android:gravity="center"
         android:text="If you are facing any issues to login please \ncontact our support team."
         android:textColor="@android:color/black"
         android:textSize="14sp"
@@ -127,10 +127,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:layout_marginTop="15dp"
         android:id="@+id/login_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/cardview_shadow_end_color"
         android:drawableStart="@drawable/ic_support_24"
         android:drawablePadding="10dp"
@@ -139,7 +140,6 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -10,7 +10,10 @@ import com.example.astrologermobileapp.R
 import com.example.astrologermobileapp.models.Feature
 
 
-class FeaturesAdapter(private val features: List<Feature>) : RecyclerView.Adapter<FeaturesAdapter.FeatureViewHolder>() {
+class FeaturesAdapter(
+    private val features: List<Feature>,
+    private val onFeatureClick: (Feature) -> Unit
+) : RecyclerView.Adapter<FeaturesAdapter.FeatureViewHolder>() {
 
     class FeatureViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val icon: ImageView = view.findViewById(R.id.iconImageView)
@@ -26,6 +29,10 @@ class FeaturesAdapter(private val features: List<Feature>) : RecyclerView.Adapte
         val feature = features[position]
         holder.icon.setImageResource(feature.icon)
         holder.title.text = feature.title
+
+        holder.itemView.setOnClickListener {
+            onFeatureClick(feature) //
+        }
     }
 
     override fun getItemCount() = features.size

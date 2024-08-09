@@ -13,22 +13,22 @@
         android:id="@+id/profile_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal"
         android:padding="5dp"
         android:weightSum="4"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="25dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:background="@drawable/profile_background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:background="@drawable/profile_background"
             android:gravity="center"
-            android:paddingVertical="15dp"
             android:orientation="vertical"
-            android:paddingHorizontal="19dp">
+            android:paddingHorizontal="19dp"
+            android:paddingVertical="15dp">
 
 
             <ImageView
@@ -39,9 +39,6 @@
                 android:src="@drawable/ic_user_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
-
-
 
 
             <TextView
@@ -73,8 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:background="@drawable/edittext_background"
-                android:hint="Full name"
                 android:drawableEnd="@drawable/ic_user_vector"
+                android:hint="Full name"
                 android:inputType="textPersonName"
                 android:padding="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -87,9 +84,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
-                android:pointerIcon="arrow"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edittext_background"
+                android:pointerIcon="arrow"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/registration_full_name" />
@@ -101,21 +98,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginTop="16dp"
-                android:drawableEnd="@drawable/ic_calendar_24"
                 android:background="@drawable/edittext_background"
+                android:drawableEnd="@drawable/ic_calendar_24"
                 android:hint="Date of birth"
                 android:inputType="date"
                 android:padding="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </LinearLayout>
 
 
     </LinearLayout>
-
 
 
     <EditText
@@ -126,8 +121,8 @@
         android:layout_marginTop="19dp"
         android:background="@drawable/edittext_background"
         android:drawableEnd="@drawable/baseline_email_24"
-        android:hint="Email ID"
         android:enabled="false"
+        android:hint="Email ID"
         android:inputType="textEmailAddress"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -142,8 +137,8 @@
         android:layout_marginTop="19dp"
         android:background="@drawable/edittext_background"
         android:drawableEnd="@drawable/ic_number_123"
-        android:hint="Mobile number"
         android:enabled="false"
+        android:hint="Mobile number"
         android:inputType="phone"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,14 +152,13 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="19dp"
         android:background="@drawable/edittext_background"
-        android:hint="Address"
         android:drawableEnd="@drawable/ic_location_pin_24"
+        android:hint="Address"
         android:inputType="textPostalAddress"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registration_mobile_number" />
-
 
 
     <Button

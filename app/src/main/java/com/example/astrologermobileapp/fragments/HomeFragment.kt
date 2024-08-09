@@ -1,5 +1,6 @@
 package com.example.astrologermobileapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.astrologermobileapp.R
+import com.example.astrologermobileapp.activities.ChatScreenActivity
 import com.example.astrologermobileapp.adapters.AstrologerAdapter
 import com.example.astrologermobileapp.adapters.FeaturesAdapter
 import com.example.astrologermobileapp.adapters.ImageSliderAdapter
@@ -54,6 +57,10 @@ class HomeFragment : Fragment() {
         setupAstrologers()
         setUpServices()
 
+        binding.tvViewAll.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_chatsFragment)
+        }
+
         return binding.root
     }
 
@@ -64,19 +71,51 @@ class HomeFragment : Fragment() {
         val serviceList = listOf(
             Service("Chat with an Astrologer", R.drawable.ic_chat_img, R.drawable.chat_image),
             Service("Call with an Astrologer", R.drawable.ic_call, R.drawable.call_image),
-            Service("Offline Video Consultation", R.drawable.ic_videocall, R.drawable.consultaion_image),
+            Service(
+                "Offline Video Consultation",
+                R.drawable.ic_videocall,
+                R.drawable.consultaion_image
+            ),
             Service("Shop at \nAstroMall", R.drawable.ic_shop_cart, R.drawable.shop_image)
         )
 
-        val serviceAdapter = ServiceAdapter(requireContext(), serviceList)
+        val serviceAdapter = ServiceAdapter(requireContext(), serviceList) { service ->
+            navigateToFragment(service)
+        }
+
+
         recyclerView.adapter = serviceAdapter
     }
 
 
+    private fun navigateToFragment(service: Service) {
+        val actionId =  when (service.name) {
+            "Chat with an Astrologer" -> R.id.action_homeFragment_to_chatsFragment
+            "Call with an Astrologer" -> R.id.action_homeFragment_to_chatsFragment
+            "Offline Video Consultation" -> R.id.action_homeFragment_to_chatsFragment
+            "Shop at \nAstroMall" -> R.id.action_homeFragment_to_shoppingFragment
+            else -> return
+        }
+
+        findNavController().navigate(actionId)
+    }
+
     private fun setupFeaturesRecyclerView() {
         val recyclerView = binding.featuresRecyclerView
         recyclerView.layoutManager = GridLayoutManager(context, 3)
-        featuresAdapter = FeaturesAdapter(getFeatures())
+        featuresAdapter = FeaturesAdapter(getFeatures()){ feature ->
+
+            val actionId =  when (feature.title) {
+                "Daily Horoscope" -> R.id.action_homeFragment_to_dailyPanchangFragment
+                "Get Free Kundali" -> R.id.action_homeFragment_to_kundaliFragment
+                "Horoscope Matching" -> R.id.action_homeFragment_to_kundaliMatchingFragment
+
+                else -> return@FeaturesAdapter
+            }
+
+            findNavController().navigate(actionId)
+        }
+
         recyclerView.adapter = featuresAdapter
     }
 
@@ -122,9 +161,15 @@ class HomeFragment : Fragment() {
         )
 
         // Set up the adapter with the astrologers list
-        astrologerAdapter = AstrologerAdapter(astrologerList)
+        astrologerAdapter = AstrologerAdapter(astrologerList){
+                selectedAstrologer ->
+            // Handle item click here
+            val intent = Intent(requireContext(), ChatScreenActivity::class.java)
+            intent.putExtra("name", selectedAstrologer.name)
+            intent.putExtra("image", selectedAstrologer.profileImageUrl)
+            startActivity(intent)
+        }
         recyclerView.adapter = astrologerAdapter
-
 
 
     }
