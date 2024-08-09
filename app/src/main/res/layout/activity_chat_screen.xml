@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/chatScreen"
     android:orientation="vertical"
     android:background="@color/background_color"
@@ -17,7 +17,11 @@
         android:background="@color/yellow"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:titleTextColor="@color/white">
+        android:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,8 +55,31 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:layout_marginStart="8dp"
-                android:layout_weight="1" />
+                android:layout_weight="1.5" />
 
+            <TextView
+                android:id="@+id/toolbar_chat_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_weight="0.5"
+                android:text="12:00"
+                android:textStyle="bold"
+                android:textColor="@color/orange"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_end"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.2"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@color/orange"
+                android:text="End"
+                android:textColor="@color/black"
+                android:padding="12dp"
+                android:textSize="16sp" />
 
 
         </LinearLayout>
@@ -67,10 +94,19 @@
         android:layout_weight="1"
         android:padding="8dp"
         android:scrollbars="vertical"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/rlmessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        />
 
     <!-- Bottom input area -->
     <RelativeLayout
+        android:id="@+id/rlmessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -106,4 +142,4 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

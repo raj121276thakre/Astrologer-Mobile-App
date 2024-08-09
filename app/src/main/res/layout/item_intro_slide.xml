@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    android:padding="16dp">
+
+    <!-- Illustration -->
+    <ImageView
+        android:id="@+id/ivSlideImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/city_skyline" />
+
+    <!-- Title or Question -->
+    <TextView
+        android:id="@+id/tvSlideTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Title Here"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="24dp"/>
+
+    <!-- Input Field -->
+    <EditText
+        android:id="@+id/etSlideInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edit_text"
+        android:hint="Enter your answer here"/>
+
+    <!-- Continue Button -->
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:textColor="@color/black"
+        android:drawableEnd="@drawable/ic_arrow_right_24"
+        android:drawableTint="@color/black"
+        android:backgroundTint="@color/green"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

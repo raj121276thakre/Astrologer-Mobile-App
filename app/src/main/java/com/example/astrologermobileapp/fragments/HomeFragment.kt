@@ -20,6 +20,7 @@ import com.example.astrologermobileapp.adapters.FeaturesAdapter
 import com.example.astrologermobileapp.adapters.ImageSliderAdapter
 import com.example.astrologermobileapp.adapters.ServiceAdapter
 import com.example.astrologermobileapp.databinding.FragmentHomeBinding
+import com.example.astrologermobileapp.introslide.IntroSlideActivity
 import com.example.astrologermobileapp.models.Astrologer
 import com.example.astrologermobileapp.models.Feature
 import com.example.astrologermobileapp.models.Service
@@ -107,8 +108,16 @@ class HomeFragment : Fragment() {
 
             val actionId =  when (feature.title) {
                 "Daily Horoscope" -> R.id.action_homeFragment_to_dailyPanchangFragment
-                "Get Free Kundali" -> R.id.action_homeFragment_to_kundaliFragment
-                "Horoscope Matching" -> R.id.action_homeFragment_to_kundaliMatchingFragment
+//                "Get Free Kundali" -> R.id.action_homeFragment_to_kundaliFragment
+//                "Horoscope Matching" -> R.id.action_homeFragment_to_kundaliMatchingFragment
+
+                "Get Free Kundali", "Horoscope Matching" -> {
+                    val intent = Intent(context, IntroSlideActivity::class.java)
+                    // Pass the feature title or ID to identify the target fragment
+                    intent.putExtra("target_fragment", feature.title)
+                    context?.startActivity(intent)
+                    return@FeaturesAdapter // Return here to prevent navigating twice
+                }
 
                 else -> return@FeaturesAdapter
             }

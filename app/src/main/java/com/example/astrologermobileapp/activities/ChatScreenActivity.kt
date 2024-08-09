@@ -2,6 +2,7 @@ package com.example.astrologermobileapp.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,6 +24,7 @@ class ChatScreenActivity : AppCompatActivity() {
 
     private val chatList = mutableListOf<ChatMessage>()
     private lateinit var chatAdapter: ChatAdapter
+    private lateinit var chatStartTime: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,8 @@ class ChatScreenActivity : AppCompatActivity() {
             insets
         }
         setupAstroDetails()
+
+        showChatTime()
 
         chatAdapter = ChatAdapter(chatList)
         binding.recyclerViewChat.adapter = chatAdapter
@@ -50,6 +54,33 @@ class ChatScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        binding.buttonEnd.setOnClickListener {
+            val chatTime = calculateChatDuration()
+            Toast.makeText(this,"Chat Time is $chatTime minutes.",Toast.LENGTH_LONG).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+    }
+
+    private fun showChatTime() {
+
+        supportActionBar?.setDisplayShowTitleEnabled(false) // Disable the default title display
+
+        // Get the current time and set it as chat start time
+        chatStartTime = Date()
+        val dateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        val chatStartTimeString = dateFormat.format(chatStartTime)
+        binding.toolbarChatStartTime.text = chatStartTimeString
+    }
+
+    private fun calculateChatDuration(): Long {
+        val currentTime = Date()
+        val durationInMillis = currentTime.time - chatStartTime.time
+        val durationInMinutes = durationInMillis / (1000 * 60)
+        return durationInMinutes
     }
 
 

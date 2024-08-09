@@ -88,6 +88,7 @@
             app:itemIconTint="@color/selector_bottom_nav_color"
             app:itemTextColor="@color/selector_bottom_nav_color"
             app:labelVisibilityMode="auto"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,6 +109,8 @@
         android:background="@color/background_color"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_menu" />
+
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

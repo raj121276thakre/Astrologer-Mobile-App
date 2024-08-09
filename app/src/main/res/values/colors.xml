@@ -14,6 +14,13 @@
     <color name="gray">#565659</color>
     <color name="green">#8AE61F</color>
 
+<!--shop colors-->
 
+    <color name="primaryGreen">#49B64E</color>
+    <color name="lightGreen">#A6EBAB</color>
+    <color name="background">#E9F6E9</color>
+    <color name="grayText">#6C6C6C</color>
+    <color name="darkText">#2E2E2E</color>
+    <color name="iconColor">#4CAF50</color>
 
 </resources>
