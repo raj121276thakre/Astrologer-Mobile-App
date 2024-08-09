@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.astrologermobileapp.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_kundaliMatchingFragment"
+            app:destination="@id/kundaliMatchingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_shoppingFragment"
+            app:destination="@id/shoppingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_kundaliFragment"
+            app:destination="@id/kundaliFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_dailyPanchangFragment"
+            app:destination="@id/dailyPanchangFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatsFragment"
+            app:destination="@id/chatsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.example.astrologermobileapp.fragments.ChatsFragment"
+        android:label="fragment_chats"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/dailyPanchangFragment"
+        android:name="com.example.astrologermobileapp.fragments.DailyPanchangFragment"
+        android:label="fragment_daily_panchang"
+        tools:layout="@layout/fragment_daily_panchang" />
+    <fragment
+        android:id="@+id/kundaliMatchingFragment"
+        android:name="com.example.astrologermobileapp.fragments.KundaliMatchingFragment"
+        android:label="fragment_kundali_matching"
+        tools:layout="@layout/fragment_kundali_matching" />
+    <fragment
+        android:id="@+id/kundaliFragment"
+        android:name="com.example.astrologermobileapp.fragments.KundaliFragment"
+        android:label="fragment_kundali"
+        tools:layout="@layout/fragment_kundali" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.astrologermobileapp.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.example.astrologermobileapp.fragments.ShoppingFragment"
+        android:label="fragment_shopping"
+        tools:layout="@layout/fragment_shopping" />
+</navigation>

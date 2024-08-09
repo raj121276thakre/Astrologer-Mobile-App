@@ -62,7 +62,11 @@ dependencies {
 
 
     //image slideshow
-    implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    // ViewPager2 for the slider
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+
+//circular Imageview
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 
 
 // Glide

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <!-- Circular Image with Yellow Border -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_astrologer_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:padding="2dp"
+        android:background="@drawable/circle_profile_background"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_profile"
+        />
+
+    <!-- Astrologer Name -->
+    <TextView
+        android:id="@+id/tv_astrologer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Astrologer Name"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:paddingTop="4dp"/>
+
+    <!-- Astrologer Expertise -->
+    <TextView
+        android:id="@+id/tv_astrologer_expertise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Vedic, Tarot"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"/>
+</LinearLayout>
