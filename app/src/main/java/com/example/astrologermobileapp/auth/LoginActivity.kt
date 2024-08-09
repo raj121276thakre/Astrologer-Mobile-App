@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginSignupPrompt.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
-            finish()
+
 
         }
 
