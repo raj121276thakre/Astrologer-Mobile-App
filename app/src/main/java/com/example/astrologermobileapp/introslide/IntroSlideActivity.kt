@@ -13,10 +13,12 @@ import com.example.astrologermobileapp.fragments.KundaliMatchingFragment
 
 class IntroSlideActivity : AppCompatActivity() {
 
+
+    private lateinit var slides: MutableList<SlideModel>
+
     private lateinit var viewPager: ViewPager2
     private lateinit var introSliderAdapter: IntroSliderAdapter
-    private lateinit var slides: MutableList<SlideModel>
-    private var targetFragment: String? = null
+    private val kundaliMatchingData = KundaliMatchingData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,32 +30,33 @@ class IntroSlideActivity : AppCompatActivity() {
             insets
         }
 
-        targetFragment = intent.getStringExtra("target_fragment")
         viewPager = findViewById(R.id.viewPager)
 
-        slides = mutableListOf(
-           // SlideModel(R.drawable.city_skyline, "Do you want to know your future?"),
-            SlideModel(R.drawable.city_skyline, "What's your name?"),
-            SlideModel(R.drawable.city_skyline, "Select your gender"),
-//            SlideModel(R.drawable.city_skyline, "Select your sentimental status"),
-            SlideModel(R.drawable.city_skyline, "Select your date of birth"),
-            SlideModel(R.drawable.city_skyline, "Select your time of birth"),
-            SlideModel(R.drawable.city_skyline, "What's your place of birth?"),
-            SlideModel(R.drawable.city_skyline, "Your report is ready!")
+        val slides = mutableListOf(
+            SlideModel(R.drawable.city_skyline, "Boy's Date of Birth", "Girl's Date of Birth"),
+            SlideModel(R.drawable.city_skyline, "Boy's Time of Birth", "Girl's Time of Birth"),
+            SlideModel(R.drawable.city_skyline, "Boy's Latitude", "Girl's Latitude"),
+            SlideModel(R.drawable.city_skyline, "Boy's Longitude", "Girl's Longitude")
         )
 
-        introSliderAdapter = IntroSliderAdapter(slides)
+
+        introSliderAdapter = IntroSliderAdapter(slides, kundaliMatchingData)
         viewPager.adapter = introSliderAdapter
         viewPager.isUserInputEnabled = false // Disable swiping
 
     }
 
     fun moveToNextSlide() {
-        if (viewPager.currentItem < slides.size - 1) {
+        if (viewPager.currentItem < introSliderAdapter.itemCount - 1) {
             viewPager.currentItem += 1
         } else {
-            // All slides completed, navigate to the target fragment
-            navigateToTargetFragment()
+            // All slides completed, navigate to KundaliMatchingFragment
+            hideViewPager()
+            val fragment = KundaliMatchingFragment.newInstance(kundaliMatchingData)
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit()
         }
     }
 
@@ -65,19 +68,6 @@ class IntroSlideActivity : AppCompatActivity() {
     }
 
 
-    private fun navigateToTargetFragment() {
-        val fragment = when (targetFragment) {
-            "Get Free Kundali" -> KundaliFragment.newInstance(slides)
-            "Horoscope Matching" -> KundaliMatchingFragment.newInstance(slides)
-            else -> null
-        }
 
-        fragment?.let {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container, it)
-                .commit()
-        }
-    }
 
 }

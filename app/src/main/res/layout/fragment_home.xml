@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="12dp"
-            app:cardCornerRadius="6dp">
+            app:cardCornerRadius="12dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPagerImageSlider"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="140dp" />
 
 
             </RelativeLayout>

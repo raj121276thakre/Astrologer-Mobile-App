@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.KundaliMatchingFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".fragments.KundaliMatchingFragment"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvBoyDob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boy's Date of Birth"
+        android:textSize="18sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvBoyTob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boy's Time of Birth"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvBoyLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boy's Latitude"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvBoyLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boy's Longitude"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvBoyTz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boy's Time Zone"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvGirlDob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Girl's Date of Birth"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tvGirlTob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Girl's Time of Birth"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvGirlLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Girl's Latitude"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvGirlLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Girl's Longitude"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvGirlTz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Girl's Time Zone"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

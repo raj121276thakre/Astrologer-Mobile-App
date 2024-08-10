@@ -4,23 +4,27 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class SlideModel(
-    val imageRes: Int,
-    val title: String,
-    var inputText: String = ""
-) : Parcelable {
+    val imageResId: Int, // If you have an image associated with each slide
+    val title1: String,
+    val title2: String
+)
+ : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.readString() ?: "",
-        parcel.readString() ?: ""
-    )
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(imageRes)
-        parcel.writeString(title)
-        parcel.writeString(inputText)
+        parcel.readString().toString(),
+        parcel.readString().toString()
+    ) {
     }
 
-    override fun describeContents(): Int = 0
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(imageResId)
+        parcel.writeString(title1)
+        parcel.writeString(title2)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
 
     companion object CREATOR : Parcelable.Creator<SlideModel> {
         override fun createFromParcel(parcel: Parcel): SlideModel {
@@ -32,4 +36,3 @@ data class SlideModel(
         }
     }
 }
-

@@ -43,7 +43,8 @@ class KundaliFragment : Fragment() {
         // Use the slides data
         // For example, you could log the data:
         slides.forEach {
-            Log.d("KundaliFragment", "Slide Title: ${it.title}, Input: ${it.inputText}")
+            Log.d("KundaliFragmentQ1", "Slide Title: ${it.title1}")
+            Log.d("KundaliFragmentQ2", "Slide Title: ${it.title2}")
         }
     }
 

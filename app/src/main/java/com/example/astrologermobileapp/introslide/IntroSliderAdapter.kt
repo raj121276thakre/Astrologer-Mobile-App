@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.astrologermobileapp.R
 import com.example.astrologermobileapp.fragments.KundaliFragment
 
-class IntroSliderAdapter(private val slides: List<SlideModel>) : RecyclerView.Adapter<IntroSliderAdapter.SlideViewHolder>() {
+class IntroSliderAdapter(
+    private val slides: List<SlideModel>,
+    private val kundaliMatchingData: KundaliMatchingData
+) : RecyclerView.Adapter<IntroSliderAdapter.SlideViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_intro_slide, parent, false)
@@ -21,36 +24,51 @@ class IntroSliderAdapter(private val slides: List<SlideModel>) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
         val slide = slides[position]
-        holder.bind(slide)
+        holder.bind(slide, position)
     }
 
     override fun getItemCount(): Int = slides.size
 
     inner class SlideViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val imageView: ImageView = view.findViewById(R.id.ivSlideImage)
-        private val titleTextView: TextView = view.findViewById(R.id.tvSlideTitle)
-        private val inputEditText: EditText = view.findViewById(R.id.etSlideInput)
+        private val titleTextView1: TextView = view.findViewById(R.id.tvSlideTitle1)
+        private val titleTextView2: TextView = view.findViewById(R.id.tvSlideTitle2)
+        private val inputEditText1: EditText = view.findViewById(R.id.etSlideInput1)
+        private val inputEditText2: EditText = view.findViewById(R.id.etSlideInput2)
         private val continueButton: Button = view.findViewById(R.id.btnContinue)
 
-        fun bind(slide: SlideModel) {
-            imageView.setImageResource(slide.imageRes)
-            titleTextView.text = slide.title
+        fun bind(slide: SlideModel, position: Int) {
+            titleTextView1.text = slide.title1
+            titleTextView2.text = slide.title2
 
-            // Handle click and pass data
             continueButton.setOnClickListener {
-                slide.inputText = inputEditText.text.toString()
-                if (adapterPosition == slides.size - 1) {
-                    // All slides completed, do something with data
-                    (itemView.context as IntroSlideActivity).hideViewPager()
-                    // Navigate to KundaliFragment or KundaliMatchingFragment
-                    val fragment = KundaliFragment.newInstance(slides)
-                    (itemView.context as AppCompatActivity).supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, fragment)
-                        .commit()
-                } else {
-                    (itemView.context as IntroSlideActivity).moveToNextSlide()
+                // Save input data
+                when (position) {
+                    0 -> {
+                        //Date of birth
+                        kundaliMatchingData.boyDob = inputEditText1.text.toString()
+                        kundaliMatchingData.girlDob = inputEditText2.text.toString()
+                    }
+                    1 -> {
+                        //Time of birth
+                        kundaliMatchingData.boyTob = inputEditText2.text.toString()
+                        kundaliMatchingData.girlTob = inputEditText1.text.toString()
+
+                    }
+                    2 -> {
+                        //lattitude
+                        kundaliMatchingData.boyLat = inputEditText2.text.toString().toDouble()
+                        kundaliMatchingData.girlLat = inputEditText1.text.toString().toDouble()
+
+                    }
+                    3 -> {
+                        //longitude
+                        kundaliMatchingData.boyLon = inputEditText1.text.toString().toDouble()
+                        kundaliMatchingData.girlLon = inputEditText2.text.toString().toDouble()
+                    }
                 }
+
+                // Move to next slide
+                (itemView.context as IntroSlideActivity).moveToNextSlide()
             }
         }
     }

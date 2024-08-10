@@ -14,25 +14,41 @@
         android:layout_gravity="center"
         android:src="@drawable/city_skyline" />
 
-    <!-- Title or Question -->
     <TextView
-        android:id="@+id/tvSlideTitle"
+        android:id="@+id/tvSlideTitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Title Here"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        android:layout_marginTop="24dp"/>
+        android:text="Question 1"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black" />
 
-    <!-- Input Field -->
     <EditText
-        android:id="@+id/etSlideInput"
+        android:layout_marginTop="12dp"
+        android:id="@+id/etSlideInput1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:padding="12dp"
         android:background="@drawable/rounded_edit_text"
-        android:hint="Enter your answer here"/>
+        android:hint="Enter answer" />
+
+    <TextView
+        android:id="@+id/tvSlideTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Question 2"
+        android:textSize="18sp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/etSlideInput2"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="12dp"
+        android:hint="Enter answer" />
 
     <!-- Continue Button -->
     <Button
@@ -44,7 +60,7 @@
         android:drawableEnd="@drawable/ic_arrow_right_24"
         android:drawableTint="@color/black"
         android:backgroundTint="@color/green"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center"/>
 
 </LinearLayout>

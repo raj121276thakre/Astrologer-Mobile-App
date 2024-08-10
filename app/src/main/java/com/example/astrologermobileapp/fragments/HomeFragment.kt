@@ -187,9 +187,10 @@ class HomeFragment : Fragment() {
     private fun setupImageSlider() {
 
         val images = listOf(
-            "https://cdn.create.vista.com/downloads/f0c8b00e-29c2-481f-9b86-76525f19e2ac_1024.jpeg",
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpbhSXVKL4omvZLNHW40u9B-Hw5QKGxvW24T7HpPHADldv3KGZmNavBV0_zA&s",
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzmCD5WOsF1QLGHR7eO9DUkXIVHskRkBn6gQ&s",
+            "https://theacharyamukti.com/image/product/new/panchang.jpg",
+            "https://theacharyamukti.com/img/online-puja.jpg",
+            "https://www.astroseva24.com/img/upload/images/banner/7525058360245.jpg"
+
 
             )
 
@@ -215,7 +216,7 @@ class HomeFragment : Fragment() {
             override fun run() {
                 sliderHandler.post(slideRunnable)
             }
-        }, 3000, 3000)  // Delay and period in milliseconds
+        }, 4000, 4000)  // Delay and period in milliseconds
     }
 
 
@@ -224,5 +225,8 @@ class HomeFragment : Fragment() {
         sliderHandler.removeCallbacksAndMessages(null)
         _binding = null
     }
+
+
+
 
 }
