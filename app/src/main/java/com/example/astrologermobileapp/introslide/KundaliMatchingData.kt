@@ -4,13 +4,17 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class KundaliMatchingData(
+    var boyName: String = "",
+    var girlName: String = "",
     var boyDob: String = "",
     var boyTob: String = "",
+    var boyPob: String = "",
     var boyTz: Double = 5.5,
     var boyLat: Double = 0.0,
     var boyLon: Double = 0.0,
     var girlDob: String = "",
     var girlTob: String = "",
+    var girlPob: String = "",
     var girlTz: Double = 5.5,
     var girlLat: Double = 0.0,
     var girlLon: Double = 0.0
@@ -18,9 +22,13 @@ data class KundaliMatchingData(
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
         parcel.readDouble(),
         parcel.readDouble(),
         parcel.readDouble(),
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readDouble(),
@@ -29,13 +37,17 @@ data class KundaliMatchingData(
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(boyName)
+        parcel.writeString(girlName)
         parcel.writeString(boyDob)
         parcel.writeString(boyTob)
+        parcel.writeString(boyPob)
         parcel.writeDouble(boyTz)
         parcel.writeDouble(boyLat)
         parcel.writeDouble(boyLon)
         parcel.writeString(girlDob)
         parcel.writeString(girlTob)
+        parcel.writeString(girlPob)
         parcel.writeDouble(girlTz)
         parcel.writeDouble(girlLat)
         parcel.writeDouble(girlLon)

@@ -1,6 +1,27 @@
 <resources>
     <string name="app_name">AstroSeva</string>
+
+    //API key
+    <string name="vedicastro_apikey" translatable="false">"9386c83e-16c0-525e-ad18-94581fca217a"</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_to_app">Welcome to AstroSeva</string>
+    <string name="splash_copyright_text">© AstroSeva 2024. All rights reserved.</string>
+
+
+    <string-array name="language_array" translatable="false">
+        <item>en</item>
+        <item>ta</item>
+        <item>ka</item>
+        <item>te</item>
+        <item>hi</item>
+        <item>ml</item>
+        <item>mr</item>
+        <item>bn</item>
+        <item>sp</item>
+        <item>fr</item>
+    </string-array>
+
+
 </resources>

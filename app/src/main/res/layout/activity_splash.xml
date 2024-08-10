@@ -46,7 +46,7 @@
         android:id="@+id/splash_copyright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="© Astroyogi 2024. All rights reserved."
+        android:text="@string/splash_copyright_text"
         android:textColor="@android:color/background_dark"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
