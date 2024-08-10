@@ -1,4 +1,4 @@
-package com.example.astroappproject.api.pdf
+package com.example.astrologermobileapp.api.pdf
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

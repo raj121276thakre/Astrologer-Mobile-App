@@ -1,18 +1,18 @@
 package com.example.astrologermobileapp.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.example.astrologermobileapp.R
+import androidx.fragment.app.Fragment
+import com.example.astrologermobileapp.databinding.FragmentKundaliBinding
 import com.example.astrologermobileapp.introslide.KundaliData
-import com.example.astrologermobileapp.introslide.SlideModel
 
 
 class KundaliFragment : Fragment() {
+
+    private var _binding: FragmentKundaliBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         private const val ARG_KUNDALI_DATA = "kundali_data"
@@ -32,8 +32,9 @@ class KundaliFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_kundali, container, false)
+        _binding = FragmentKundaliBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
 
@@ -41,21 +42,36 @@ class KundaliFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         kundaliData = arguments?.getParcelable(ARG_KUNDALI_DATA) ?: KundaliData()
+        displayInputedData(kundaliData)
 
-        // Use the data in your views
-        val tvName: TextView = view.findViewById(R.id.tvName)
-        val tvDob: TextView = view.findViewById(R.id.tvDob)
-        val tvTob: TextView = view.findViewById(R.id.tvTob)
-        val tvLat: TextView = view.findViewById(R.id.tvLat)
-        val tvLon: TextView = view.findViewById(R.id.tvLon)
-        val tvTz: TextView = view.findViewById(R.id.tvTz)
+        setupButtons(kundaliData)
 
-        tvName.text = "Boy's Name: ${kundaliData.name}"
-        tvDob.text = "Date of Birth: ${kundaliData.dob}"
-        tvTob.text = "Time of Birth: ${kundaliData.tob}"
-        tvLat.text = "Latitude: ${kundaliData.lat}"
-        tvLon.text = "Longitude: ${kundaliData.lon}"
-        tvTz.text = "Time Zone: ${kundaliData.tz}"
+    }
+
+    private fun setupButtons(kundaliData: KundaliData) {
+
+        //...............................
+    }
+
+
+
+
+    private fun displayInputedData(kundaliData: KundaliData) {
+
+        // Set the data to the TextViews
+        binding.tvName.text = "Boy's Name: ${this.kundaliData.name}"
+        binding.tvDob.text = "Date of Birth: ${this.kundaliData.dob}"
+        binding.tvTob.text = "Time of Birth: ${this.kundaliData.tob}"
+        binding.tvLat.text = "Latitude: ${this.kundaliData.lat}"
+        binding.tvLon.text = "Longitude: ${this.kundaliData.lon}"
+        binding.tvTz.text = "Time Zone: ${this.kundaliData.tz}"
+
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

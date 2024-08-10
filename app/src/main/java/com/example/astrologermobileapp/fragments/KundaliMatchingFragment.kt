@@ -11,11 +11,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.astroappproject.api.KundaliResponse
-import com.example.astroappproject.api.RetrofitInstance
+import com.example.astrologermobileapp.api.kundaliMatching.KundaliResponse
+import com.example.astrologermobileapp.api.kundaliMatching.RetrofitInstance
 
-import com.example.astroappproject.api.pdf.PdfResponse
-import com.example.astroappproject.api.pdf.RetrofitInstancePdf
+import com.example.astrologermobileapp.api.pdf.PdfResponse
+import com.example.astrologermobileapp.api.pdf.RetrofitInstancePdf
 import com.example.astrologermobileapp.R
 import com.example.astrologermobileapp.databinding.FragmentKundaliMatchingBinding
 import com.example.astrologermobileapp.introslide.KundaliMatchingData
@@ -71,12 +71,10 @@ class KundaliMatchingFragment : Fragment() {
         getLanguageFromUser()
 
         binding.matchKundaliBtn.setOnClickListener {
-
             val apiKey = getString(R.string.vedicastro_apikey)
             // Get selected language from Spinner
             val selectedLang =
                 binding.languageSpinner.tag?.toString() ?: "en"  // default to "en" if not set
-
 
             fetchKundaliDetails(
                 boyDob = matchingData.boyDob,
@@ -97,18 +95,10 @@ class KundaliMatchingFragment : Fragment() {
         }
 
         binding.getPdfbtn.setOnClickListener {
-
-
             val apiKey = getString(R.string.vedicastro_apikey)
             // Get selected language from Spinner
             val selectedLang =
                 binding.languageSpinner.tag?.toString() ?: "en"  // default to "en" if not set
-
-//            val boyPob = binding.boybirthPlace.text.toString()
-//            val girlPob = binding.girlbirthPlace.text.toString()
-//            val boyName = binding.boyName.text.toString()
-//            val girlName = binding.girlName.text.toString()
-
 
             getPdfUrl(
                 boyDob = matchingData.boyDob,
@@ -125,18 +115,13 @@ class KundaliMatchingFragment : Fragment() {
                 apiKey = apiKey,
                 lang = selectedLang,
 
-
-
                 boyPob = matchingData.boyPob, //......
                 girlPob = matchingData.girlPob, //......
-
                 boyName = matchingData.boyName,
                 girlName = matchingData.girlName
             )
 
-
         }
-
 
     }
 
@@ -261,10 +246,7 @@ class KundaliMatchingFragment : Fragment() {
     }
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 
 
     //    return language
@@ -302,5 +284,10 @@ class KundaliMatchingFragment : Fragment() {
 
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

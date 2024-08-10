@@ -1,14 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.DailyPanchangFragment">
+    android:id="@+id/DailyMain"
+    android:background="@color/background_color"
+    tools:context=".fragments.DailyPanchangFragment"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:background="@drawable/profile_background"
+        android:padding="16dp"
+        android:layout_margin="12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Today's Panchang"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <!-- Sunrise and Moonrise -->
+        <TextView
+            android:layout_marginTop="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunrise and Moonrise"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sunrise: 6:33:01 AM" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sunset: 6:33:54 PM" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Moonrise: 5:37:35 AM" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Moonset: 5:55:56 PM" />
+        </LinearLayout>
+
+        <!-- Panchang -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Panchang"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textViewDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Day: Friday" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: 12/12/2024" />
+
+        <TextView
+            android:id="@+id/textViewTithi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tithi: Amavasya" />
+
+        <TextView
+            android:id="@+id/textViewNakshatra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nakshatra: Shatabhisha" />
+
+        <TextView
+            android:id="@+id/textViewKarana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Karana: Chatushpada" />
+
+        <TextView
+            android:id="@+id/textViewYoga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yoga: Sadhya" />
+
+        <!-- Advanced Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Advanced Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textViewAyanamsa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ayanamsa: 23 46'51" />
+
+        <TextView
+            android:id="@+id/textViewRasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rasi: Aquarius" />
+
+        <!-- Samvat and Other Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Samvat and Other Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textViewYears"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kali: 5094, Saka: 1915, Vikram Samvaat: 2050" />
+
+        <!-- Rahukaal, Gulika, Yamakanta -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rahukaal, Gulika, Yamakanta"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/textViewRahukaal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rahukaal: 10:30 AM to 12:00 PM" />
+
+        <TextView
+            android:id="@+id/textViewGulika"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gulika: 7:30 AM to 9:00 AM" />
+
+        <TextView
+            android:id="@+id/textViewYamakanta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yamakanta: 3:00 PM to 4:30 PM" />
+    </LinearLayout>
+</ScrollView>

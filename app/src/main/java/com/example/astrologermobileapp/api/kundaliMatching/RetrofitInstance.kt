@@ -1,4 +1,4 @@
-package com.example.astroappproject.api
+package com.example.astrologermobileapp.api.kundaliMatching
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

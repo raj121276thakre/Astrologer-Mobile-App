@@ -1,4 +1,4 @@
-package com.example.astroappproject.api
+package com.example.astrologermobileapp.api.kundaliMatching
 
 
 data class KundaliResponse(
