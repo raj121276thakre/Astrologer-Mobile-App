@@ -66,32 +66,49 @@ class KundaliFragment : Fragment() {
             val selectedLang =
                 binding.languageSpinner.tag?.toString() ?: "en"  // default to "en" if not set
 
-            fetchKundaliDetails(api_Key,selectedLang)
+            fetchKundaliDetails(kundaliData, api_Key, selectedLang)
         }
     }
 
 
-
-
-
-    private fun fetchKundaliDetails(api_Key: String, selectedLang: String) {
+    private fun fetchKundaliDetails(
+        kundaliData: KundaliData,
+        api_Key: String,
+        selectedLang: String
+    ) {
         // Replace with actual parameters
-        val dob = "21/04/2021"
-        val tob = "11:40"
-        val lat = 11.0
-        val lon = 77.0
+        val dob = kundaliData.dob
+        val tob = kundaliData.tob
+        val lat = kundaliData.lat
+        val lon = kundaliData.lon
+
         val tz = 5.5
         val apiKey = api_Key
         val lang = selectedLang
 
-        val call = PersonKundaliRetrofitInstance.api.getKundaliDetails(dob, tob, lat, lon, tz, apiKey,lang)
+        val call = PersonKundaliRetrofitInstance.api.getKundaliDetails(
+            dob,
+            tob,
+            lat,
+            lon,
+            tz,
+            apiKey,
+            lang
+        )
 
         call.enqueue(object : Callback<PersonKundaliResponse> {
-            override fun onResponse(call: Call<PersonKundaliResponse>, response: Response<PersonKundaliResponse>) {
+            override fun onResponse(
+                call: Call<PersonKundaliResponse>,
+                response: Response<PersonKundaliResponse>
+            ) {
                 if (response.isSuccessful) {
                     val kundaliDetails = response.body()
                     // Handle the response here, for example, display data in the UI
-                    Toast.makeText(requireContext(), "Kundali fetched successfully!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Kundali fetched successfully!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     Log.d("KundaliDetails", kundaliDetails.toString())
 
                     // Example: Update the UI with received Kundali details
@@ -102,7 +119,8 @@ class KundaliFragment : Fragment() {
 
                 } else {
                     // Handle the case where the API call is not successful
-                    Toast.makeText(requireContext(), "Failed to fetch Kundali", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Failed to fetch Kundali", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
@@ -113,10 +131,6 @@ class KundaliFragment : Fragment() {
             }
         })
     }
-
-
-
-
 
 
     //    return language

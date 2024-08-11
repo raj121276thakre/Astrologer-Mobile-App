@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    tools:openDrawer="start"
     tools:context=".MainActivity">
 
 
@@ -108,7 +109,34 @@
         android:layout_gravity="start"
         android:background="@color/background_color"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_menu" />
+        app:itemIconTint="@color/selector_bottom_nav_color"
+        app:itemTextColor="@color/selector_bottom_nav_color"
+        app:menu="@menu/drawer_menu" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- The existing menu items -->
+            <ListView
+                android:id="@+id/nav_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.9"
+                android:visibility="invisible" />
+
+            <!-- Include the footer layout -->
+            <include
+                layout="@layout/nav_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.07" />
+
+        </LinearLayout>
+
+
+    </com.google.android.material.navigation.NavigationView>
 
 
 

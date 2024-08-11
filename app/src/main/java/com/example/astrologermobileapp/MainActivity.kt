@@ -1,11 +1,16 @@
 package com.example.astrologermobileapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -44,12 +49,88 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigation_view)
 
+
+
+
         navigationView.setNavigationItemSelectedListener { menuItem ->
-            handleNavigationItemSelected(menuItem)
-            true
+
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            val navController = navHostFragment.navController
+
+            // Uncheck all items before checking the selected one
+            for (i in 0 until navigationView.menu.size()) {
+                val item = navigationView.menu.getItem(i)
+                item.isChecked = false
+                // If the item has a submenu, uncheck its children too
+                if (item.hasSubMenu()) {
+                    for (j in 0 until (item.subMenu?.size() ?: 0)) {
+                        val subItem = item.subMenu?.getItem(j)
+                        if (subItem != null) {
+                            subItem.isChecked = false
+                        }
+                    }
+                }
+            }
+
+            val handled = when (menuItem.itemId) {
+                R.id.nav_Shopping -> {
+                    // Navigate to ShoppingFragment
+                    navController.navigate(R.id.shoppingFragment)
+                    true
+                }
+
+                R.id.nav_faq_support -> {
+                    // Start SupportActivity
+                   // startActivity(Intent(this, SupportActivity::class.java))
+                    true
+                }
+                R.id.nav_how_to_use -> {
+                    // Start UserGuideActivity
+                   // startActivity(Intent(this, UserGuideActivity::class.java))
+                    true
+                }
+                R.id.nav_about_us -> {
+                    // Show About Us Dialog
+                    showAboutUsDialog()
+                    true
+                }
+
+                R.id.nav_rate_us -> {
+                    // Show Rating Dialog
+                    showRatingDialog()
+                    true
+                }
+                R.id.nav_share_app -> {
+                    // Share the app via any platform
+                    shareApp()
+                    true
+                }
+                R.id.nav_logOut -> {
+                    // Handle logout
+                    //handleLogout()
+                    true
+                }
+                else -> false
+            }
+
+            if (handled) {
+                // Highlight the selected item
+                menuItem.isChecked = true
+
+                // Close the drawer after the option is clicked
+                drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            handled
         }
 
-       binding.ivMenu.setOnClickListener {
+
+
+
+
+
+        binding.ivMenu.setOnClickListener {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START)
             } else {
@@ -64,41 +145,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun handleNavigationItemSelected(menuItem: MenuItem) {
-        when (menuItem.itemId) {
-//            R.id.nav_dashboard -> {
-//                // Handle Dashboard click
-//            }
-//            R.id.nav_order_history -> {
-//                // Handle Order History click
-//            }
-//            R.id.nav_wallet -> {
-//                // Handle Wallet Transactions click
-//            }
-//            R.id.nav_settings -> {
-//                // Handle Settings click
-//            }
-//            R.id.nav_faq_support -> {
-//                // Handle FAQs & Support click
-//            }
-//            R.id.nav_how_to_use -> {
-//                // Handle How to Use click
-//            }
-//            R.id.nav_rate_us -> {
-//                // Handle Rate Us click
-//            }
-//            R.id.nav_share_app -> {
-//                // Handle Share App click
-//            }
-//            R.id.nav_about_us -> {
-//                // Handle About Us click
-//            }
-        }
-        // Highlight the selected item
-        menuItem.isChecked = true
-        // Close the drawer after handling the click
-        drawerLayout.closeDrawer(GravityCompat.START)
-    }
+
 
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -144,10 +191,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
-//                R.id.nav_wallet -> {
-//                    navController.navigate(R.id.profileFragment)
-//                    true
-//                }
+
 
                 R.id.nav_profile -> {
                     navController.navigate(R.id.profileFragment)
@@ -184,5 +228,64 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // Menu Item Functions ........
+
+    private fun shareApp() {
+        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, "Check out this amazing app!")
+            putExtra(Intent.EXTRA_TEXT, "Download this app from: [Play Store link]")
+        }
+        startActivity(Intent.createChooser(shareIntent, "Share via"))
+    }
+
+
+    private fun showRatingDialog() {
+        // Inflate the dialog layout
+        val dialogView = layoutInflater.inflate(R.layout.dialog_rate_us, null)
+
+        // Find the RatingBar and EditText from the inflated view
+        val ratingBar = dialogView.findViewById<RatingBar>(R.id.ratingBar)
+        val feedbackEditText = dialogView.findViewById<EditText>(R.id.etFeedback)
+
+        // Create the dialog
+        AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setPositiveButton("Submit") { dialog, _ ->
+                // Retrieve rating and feedback from the views
+                val rating = ratingBar.rating
+                val feedback = feedbackEditText.text.toString()
+
+                // Handle the submission of rating and feedback
+                handleRatingSubmission(rating, feedback)
+
+                // Dismiss the dialog
+                dialog.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .create()
+            .show()
+    }
+
+
+    private fun handleRatingSubmission(rating: Float, feedback: String) {
+        // For example, log the rating and feedback or send them to a server
+        Log.d("RatingDialog", "Rating: $rating, Feedback: $feedback")
+
+        // You can also show a Toast or update UI based on the submission
+        Toast.makeText(this, "Thank you for your ${rating.toInt()}★ rating and feedback!", Toast.LENGTH_LONG).show()
+    }
+
+
+
+    private fun showAboutUsDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_about_us, null)
+
+        AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setPositiveButton(android.R.string.ok, null)
+            .create()
+            .show()
+    }
 
 }

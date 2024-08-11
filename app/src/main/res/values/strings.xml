@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AstroSeva</string>
+    <string name="app_version">Version: 1.0</string>
 
     //API key
     <string name="vedicastro_apikey" translatable="false">"9386c83e-16c0-525e-ad18-94581fca217a"</string>
@@ -8,6 +9,13 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_to_app">Welcome to AstroSeva</string>
     <string name="splash_copyright_text">© AstroSeva 2024. All rights reserved.</string>
+
+    <string name="also_available_on">Also Available On</string>
+    <string name="facebook">facebook\n</string>
+    <string name="instagram">Instagram</string>
+    <string name="youtube">Youtube\n</string>
+    <string name="twitter">Twitter</string>
+    <string name="app_descriptin">AstroSeva is your all-in-one astrology app, offering Kundali creation, Kundali Matching, Daily Panchang updates, and access to experienced astrologers for personalized guidance. Explore our Astro Shop for a wide range of astrology products to support your journey.</string>
 
 
     <string-array name="language_array" translatable="false">

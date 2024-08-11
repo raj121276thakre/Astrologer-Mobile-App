@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--    <item-->
-<!--        android:id="@+id/nav_dashboard"-->
-<!--        android:title="Dashboard"-->
-<!--        android:icon="@drawable/ic_dashboard"/>-->
-
-<!--    <item-->
-<!--        android:id="@+id/nav_order_history"-->
-<!--        android:title="Order History"-->
-<!--        android:icon="@drawable/ic_order_history"/>-->
-
-<!--    <item-->
-<!--        android:id="@+id/nav_wallet"-->
-<!--        android:title="Wallet Trans."-->
-<!--        android:icon="@drawable/ic_wallet">-->
-<!--        <menu>-->
-<!--            <item-->
-<!--                android:id="@+id/nav_wallet_balance"-->
-<!--                android:title="₹ 5000"-->
-<!--                android:enabled="false"/>-->
-<!--        </menu>-->
-<!--    </item>-->
-
-<!--    <item-->
-<!--        android:id="@+id/nav_settings"-->
-<!--        android:title="Settings"-->
-<!--        android:icon="@drawable/ic_settings"/>-->
+    <item
+        android:id="@+id/nav_Shopping"
+        android:icon="@drawable/ic_shopping"
+        android:title="Astro Shop" />
 
     <item
-        android:id="@+id/nav_faq_support"
-        android:title="FAQs &amp; Support"
-        android:icon="@drawable/ic_support_24"/>
+        android:id="@+id/nav_settings"
+        android:title="Settings">
+        <menu >
+            <group
+                android:id="@+id/group_settings"
+                >
+                <item
+                    android:id="@+id/nav_faq_support"
+                    android:icon="@drawable/ic_support_24"
+                    android:title="FAQs &amp; Support" />
+                <item
+                    android:id="@+id/nav_how_to_use"
+                    android:icon="@drawable/ic_user_24"
+                    android:title="How to Use" />
+                <item
+                    android:id="@+id/nav_about_us"
+                    android:icon="@drawable/ic_aboutus"
+                    android:title="About Us" />
+            </group>
+        </menu>
+    </item>
 
     <item
-        android:id="@+id/nav_how_to_use"
-        android:title="How to Use"
-        android:icon="@drawable/ic_profile"/>
+        android:id="@+id/nav_more"
+        android:title="More">
+        <menu>
+            <group android:id="@+id/group_more">
+                <item
+                    android:id="@+id/nav_rate_us"
+                    android:icon="@drawable/ic_rateus"
+                    android:title="Rate US" />
+                <item
+                    android:id="@+id/nav_share_app"
+                    android:icon="@drawable/ic_share"
+                    android:title="Share App" />
+            </group>
+        </menu>
+    </item>
 
     <item
-        android:id="@+id/nav_rate_us"
-        android:title="Rate US"
-        android:icon="@drawable/ic_chat"/>
-
-    <item
-        android:id="@+id/nav_share_app"
-        android:title="Share App"
-        android:icon="@drawable/ic_kundali"/>
-
-    <item
-        android:id="@+id/nav_about_us"
-        android:title="About Us"
-        android:icon="@drawable/ic_shopping"/>
+        android:id="@+id/nav_logOut"
+        android:icon="@drawable/ic_logout"
+        android:title="Log Out" />
 
 </menu>
