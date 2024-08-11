@@ -76,7 +76,7 @@ class KundaliMatchingFragment : Fragment() {
             val selectedLang =
                 binding.languageSpinner.tag?.toString() ?: "en"  // default to "en" if not set
 
-            fetchKundaliDetails(
+            fetchKundaliMatchingDetails(
                 boyDob = matchingData.boyDob,
                 boyTob = matchingData.boyTob,
                 boyTz = matchingData.boyTz,
@@ -127,7 +127,7 @@ class KundaliMatchingFragment : Fragment() {
 
 
     //     match and fetch kundali details from api
-    private fun fetchKundaliDetails(
+    private fun fetchKundaliMatchingDetails(
         boyDob: String, boyTob: String, boyTz: Double, boyLat: Double, boyLon: Double,
         girlDob: String, girlTob: String, girlTz: Double, girlLat: Double, girlLon: Double,
         apiKey: String, lang: String
