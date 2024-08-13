@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Custom DatePickerDialog theme -->
+    <style name="CustomDatePickerDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorAccent">@android:color/holo_orange_light</item> <!-- Change to your desired color -->
+    </style>
+
+    <!-- Custom TimePickerDialog theme -->
+    <style name="CustomTimePickerDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorAccent">@android:color/holo_orange_light</item> <!-- Change to your desired color -->
+    </style>
+
+</resources>
+
+

@@ -12,11 +12,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.astrologermobileapp.MainActivity
 import com.example.astrologermobileapp.R
-import com.example.astrologermobileapp.databinding.ActivityLoginBinding
+import com.example.astrologermobileapp.auth.auth_api.RegisterRequest
+import com.example.astrologermobileapp.auth.auth_api.RetrofitClient
 import com.example.astrologermobileapp.databinding.ActivityRegisterBinding
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 class RegisterActivity : AppCompatActivity() {
@@ -34,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
-setGenderSpinner()
+        setGenderSpinner()
 
         val dobEditText = binding.registrationDob
 
@@ -54,12 +57,68 @@ setGenderSpinner()
         }
 
         binding.signUpButton.setOnClickListener {
-            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-            finish()
+//            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+//            finish()
 
+                registerUser()
         }
 
     }
+
+
+
+    private fun registerUser() {
+        val request = RegisterRequest(
+            name = binding.registrationFullName.text.toString(),
+            email = binding.registrationEmail.text.toString(),
+            password = binding.registrationPassword.text.toString(),
+            gender = binding.registrationGenderSpinner.selectedItem.toString(),
+            dob = binding.registrationDob.text.toString(),
+            address = binding.registrationAddress.text.toString(),
+            phone = binding.registrationMobileNumber.text.toString()
+        )
+
+        lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.authService.register(request)
+                if (response.isSuccessful) {
+                    // Save JWT token
+                    val token = response.body()?.token
+                    saveToken(token)
+                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                    finish()
+                } else {
+                    // Handle error
+                }
+            } catch (e: Exception) {
+                // Handle exception
+            }
+        }
+    }
+
+    private fun saveToken(token: String?) {
+        val sharedPreferences = getSharedPreferences("auth", MODE_PRIVATE)
+        sharedPreferences.edit().putString("jwt_token", token).apply()
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -82,7 +141,6 @@ setGenderSpinner()
                 dobEditText.setText(selectedDate)
             }, year, month, day)
         datePickerDialog.show()
-
 
 
     }
@@ -110,10 +168,6 @@ setGenderSpinner()
                 }
             }
         }
-
-
-
-
 
 
 }
